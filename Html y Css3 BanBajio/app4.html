@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Formulario con validación</title>
+	<style>
+		input[type=text], input[type=email], input[type=tel], select, textarea {
+			width: 100%;
+			padding: 12px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+			margin-top: 6px;
+			margin-bottom: 16px;
+			resize: vertical;
+		}
+		
+		input[type=submit] {
+			background-color: #4CAF50;
+			color: white;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+		
+		input[type=submit]:hover {
+			background-color: #45a049;
+		}
+		
+		.container {
+			border-radius: 5px;
+			background-color: #f2f2f2;
+			padding: 20px;
+			width: 50%;
+			margin: 0 auto;
+		}
+		
+		.error-message {
+			color: red;
+			font-size: 12px;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Formulario de contacto</h1>
+		<form action="#" method="post" onsubmit="return validateForm()">
+			<label for="nombre">Nombre:</label>
+			<input type="text" id="nombre" name="nombre" required>
+			<div id="nombreError" class="error-message"></div>
+			
+			<label for="email">Correo electrónico:</label>
+			<input type="email" id="email" name="email" required>
+			<div id="emailError" class="error-message"></div>
+			
+			<label for="telefono">Teléfono:</label>
+			<input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" required>
+			<div id="telefonoError" class="error-message"></div>
+			
+			<label for="mensaje">Mensaje:</label>
+			<textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+			<div id="mensajeError" class="error-message"></div>
+			
+			<input type="button" value="Enviar" onclick="validateForm()">
+		</form>
+	</div>
+
+    <script>
+        function validateForm() {
+            var nombre = document.getElementById("nombre").value;
+            var email = document.getElementById("email").value;
+            var telefono = document.getElementById("telefono").value;
+            var mensaje = document.getElementById("mensaje").value;
+            var isValid = true;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var telefonoRegex = /^[0-9]{10}$/;
+            
+            if (nombre === "") {
+                document.getElementById("nombreError").innerHTML = "Por favor ingresa tu nombre";
+                isValid = false;
+            } else {
+                document.getElementById("nombreError").innerHTML = "";
+            }
+            
+            if (email === "") {
+                document.getElementById("emailError").innerHTML = "Por favor ingresa tu correo electrónico";
+                isValid = false;
+            } else if (!emailRegex.test(email)) {
+                document.getElementById("emailError").innerHTML = "Por favor ingresa un correo electrónico válido";
+                isValid = false;
+            } else {
+                document.getElementById("emailError").innerHTML = "";
+            }
+            
+            if (telefono === "") {
+                document.getElementById("telefonoError").innerHTML = "Por favor ingresa tu número de teléfono";
+                isValid = false;
+            } else if (!telefonoRegex.test(telefono)) {
+                document.getElementById("telefonoError").innerHTML = "Por favor ingresa un número de teléfono válido (10 dígitos)";
+                isValid = false;
+            } else {
+                document.getElementById("telefonoError").innerHTML = "";
+            }
+            
+            if (mensaje === "") {
+                document.getElementById("mensajeError").innerHTML = "Por favor ingresa un mensaje";
+                isValid = false;
+            } else {
+                document.getElementById("mensajeError").innerHTML = "";
+            }
+            
+            return isValid;
+        }
+    </script>
+    
+</body>
+</html>

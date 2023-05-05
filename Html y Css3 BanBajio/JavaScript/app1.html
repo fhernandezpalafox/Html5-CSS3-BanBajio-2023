@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cambio de tema oscuro/luz</title>
+	<style>
+		body {
+			background-color: #fff;
+			color: #000;
+		}
+		body.dark {
+			background-color: #000;
+			color: #fff;
+		}
+	</style>
+	<script>
+		function cambiarTema() {
+			var body = document.querySelector("body");
+			if (body.classList.contains("dark")) {
+				body.classList.remove("dark");
+			} else {
+				body.classList.add("dark");
+			}
+		}
+	</script>
+</head>
+<body>
+	<button onclick="cambiarTema()">Cambiar tema</button>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod lorem vel nisl feugiat, in tincidunt nulla dictum. Proin non metus id tellus eleifend hendrerit. Vivamus imperdiet sapien eros, in consectetur turpis fringilla at. Nam euismod feugiat velit eget tempor. Sed quis nunc felis. Fusce euismod enim in mauris convallis, quis suscipit odio tempor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent vitae velit sed ipsum imperdiet suscipit. Duis dignissim aliquet eros sit amet dignissim. Sed vitae felis nec est malesuada dapibus ut vel arcu. Praesent ut justo eget nisl elementum rutrum.</p>
+</body>
+</html>

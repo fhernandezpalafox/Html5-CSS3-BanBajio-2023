@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Menú desplegable</title>
+	<style>
+		.dropdown {
+			position: relative;
+			display: inline-block;
+		}
+		.dropdown-content {
+			display: none;
+			position: absolute;
+			z-index: 1;
+			background: blueviolet;
+			width: 70px;
+			padding: 10px;
+			border-radius: 10px;
+			
+		}
+		.dropdown-content a {
+			color: white;
+			margin: 5px;
+			text-decoration: none;
+		}
+		.dropdown:hover .dropdown-content {
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div class="dropdown">
+		<a href="#">Menú</a>
+		<div class="dropdown-content">
+			<a href="#">Opción 1</a>
+			<a href="#">Opción 2</a>
+			<a href="#">Opción 3</a>
+		</div>
+	</div>
+</body>
+</html>

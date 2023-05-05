@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chat</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f0f0f0;
+		}
+		.chat {
+			background-color: #fff;
+			border-radius: 5px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+			margin: 20px auto;
+			max-width: 600px;
+			padding: 20px;
+		}
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+		li.message {
+			margin: 10px 0;
+			padding: 10px;
+			border-radius: 5px;
+			clear: both;
+			overflow: hidden;
+		}
+		li.message.sent {
+			background-color: #d9e8ff;
+			float: right;
+		}
+		li.message.received {
+			background-color: #f3f3f3;
+			float: left;
+		}
+		form {
+			display: flex;
+			margin-top: 20px;
+		}
+		input[type="text"] {
+			flex-grow: 1;
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+		}
+		input[type="submit"] {
+			background-color: #4CAF50;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			padding: 10px;
+			margin-left: 10px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="chat">
+		<ul id="message-list">
+			<li class="message received">Hola, ¿cómo estás?</li>
+			<li class="message sent">Hola, estoy bien gracias. ¿Y tú?</li>
+			<li class="message received">Estoy bien también, gracias.</li>
+		</ul>
+		<form id="message-form">
+			<input type="text" placeholder="Escribe tu mensaje...">
+			<input type="submit" value="Enviar">
+		</form>
+	</div>
+
+	<script>
+		// Conectamos al servidor a través de WebSocket
+		const socket = new WebSocket('ws://localhost:8080');
+
+		// Escuchamos el evento "open" para saber cuando se ha establecido la conexión
+		socket.addEventListener('open', event => {
+			console.log('Conexión establecida');
+		});
+
+		// Escuchamos el evento "message" para recibir los mensajes del servidor
+		socket.addEventListener('message', event => {
+			const messageList = document.getElementById('message-list');
+			const message = document.createElement('li');
+            console.log(event.data);
+            console.log(JSON.stringify(event.data));
+			message.textContent = event.data;
+			message.classList.add('message', 'received');
+			messageList.appendChild(message);
+		});
+
+		// Escuchamos el evento "submit" del formulario para enviar el mensaje
+		const messageForm = document.getElementById('message-form');
+		messageForm.addEventListener('submit', event => {
+			event.preventDefault();
+			const input = messageForm.querySelector('input[type="text"]');
+const message = input.value.trim();
+if (message) {
+// Enviamos el mensaje al servidor
+socket.send(message);
+			// Añadimos el mensaje a la lista de mensajes
+			const messageList = document.getElementById('message-list');
+			const messageItem = document.createElement('li');
+			messageItem.textContent = message;
+			messageItem.classList.add('message', 'sent');
+			messageList.appendChild(messageItem);
+
+			// Borramos el contenido del input
+			input.value = '';
+		}
+	});
+</script>
+

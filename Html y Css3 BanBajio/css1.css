@@ -1,0 +1,33 @@
+/* Estilos para todas las pantallas */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Estilos para pantallas grandes */
+  @media only screen and (min-width: 768px) {
+    h1 {
+      font-size: 48px;
+      color: white;
+    }
+    
+    p {
+      font-size: 24px;
+      color: white;
+    }
+  }
+  
+  /* Estilos para pantallas pequeñas */
+  @media only screen and (max-width: 767px) {
+    h1 {
+      font-size: 24px;
+      color: black;
+    }
+    
+    p {
+      font-size: 16px;
+      color: black;
+    }
+  }
+  

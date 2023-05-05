@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Validación de formulario</title>
+	<script>
+		function validarFormulario() {
+			var nombre = document.forms["formulario"]["nombre"].value;
+			var email = document.forms["formulario"]["email"].value;
+			if (nombre == "" || email == "") {
+				alert("Por favor, complete todos los campos.");
+				return false;
+			}
+		}
+	</script>
+</head>
+<body>
+	<form name="formulario" onsubmit="return validarFormulario()">
+		<label for="nombre">Nombre:</label>
+		<input type="text" name="nombre"><br>
+		<label for="email">Email:</label>
+		<input type="email" name="email"><br>
+		<input type="submit" value="Enviar">
+	</form>
+</body>
+</html>

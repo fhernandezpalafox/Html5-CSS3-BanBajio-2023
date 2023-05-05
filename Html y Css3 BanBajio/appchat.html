@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Chat en HTML y CSS</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f5f5f5;
+		}
+		
+		.chat {
+			background-color: #fff;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			margin: 50px auto;
+			max-width: 800px;
+			padding: 20px;
+			position: relative;
+		}
+		
+		.chat:before {
+			content: '';
+			display: block;
+			position: absolute;
+			top: -10px;
+			left: 30px;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 0 10px 10px 10px;
+			border-color: transparent transparent #fff transparent;
+		}
+		
+		.chat:after {
+			content: '';
+			display: block;
+			position: absolute;
+			top: -8px;
+			left: 30px;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 0 10px 10px 10px;
+			border-color: transparent transparent #f5f5f5 transparent;
+		}
+		
+		.chat ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		
+		.chat li {
+			margin-bottom: 10px;
+		}
+		
+		.chat .message {
+			background-color: #f5f5f5;
+			border-radius: 5px;
+			display: inline-block;
+			font-size: 14px;
+			padding: 10px;
+			max-width: 70%;
+		}
+		
+		.chat .message.sent {
+			background-color: #dcf8c6;
+			float: right;
+		}
+		
+		.chat .message.received {
+			background-color: #fff;
+			float: left;
+		}
+		
+		.chat input[type="text"] {
+			border-radius: 5px;
+			border: none;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			font-size: 14px;
+			padding: 10px;
+			width: 70%;
+		}
+		
+		.chat input[type="submit"] {
+			background-color: #4CAF50;
+			border: none;
+			border-radius: 5px;
+			color: #fff;
+			cursor: pointer;
+			font-size: 14px;
+			padding: 10px;
+			width: 28%;
+		}
+	</style>
+</head>
+<body>
+	<div class="chat">
+		<ul>
+			<li class="message received">Hola, ¿cómo estás?</li>
+			<li class="message sent">Hola, estoy bien, gracias. ¿Y tú?</li>
+			<li class="message received">Estoy bien también, gracias.</li>
+			<li class="message received
+            <li class="message received">¿Qué planes tienes para hoy?</li>
+            <li class="message sent">Hoy voy al cine con unos amigos, ¿y tú?</li>
+            <li class="message received">Nada en especial, tal vez salga a caminar un rato.</li>
+        </ul>
+        <form>
+            <input type="text" placeholder="Escribe tu mensaje...">
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+
+</body>
+
+</html>
